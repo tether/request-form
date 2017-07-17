@@ -24,6 +24,9 @@ http.createServer((req, res) => {
 })
 ```
 
+Options are the same passed to the module [inflate-body](https://github.com/tether/inflate-body) plus:
+  - `queryString` optional object passed to the module [qs](https://github.com/ljharb/qs)
+
 ## Installation
 
 ```shell

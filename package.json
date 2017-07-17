@@ -1,7 +1,7 @@
 {
   "name": "request-form",
   "version": "1.0.0",
-  "description": "",
+  "description": "Parse x-www-form-urlencoded request.",
   "main": "index.js",
   "scripts": {
     "test": "tape test/*.js"
@@ -11,7 +11,11 @@
     "url": "git+https://github.com/tether/request-form.git"
   },
   "keywords": [
-    "tether"
+    "request",
+    "encoded",
+    "url",
+    "form",
+    "http"
   ],
   "author": "Petrofeed Inc",
   "license": "MIT",
