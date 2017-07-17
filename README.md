@@ -5,11 +5,23 @@
 [![Downloads](https://img.shields.io/npm/dm/request-form.svg)](http://npm-stat.com/charts.html?package=request-form)
 [![guidelines](https://tether.github.io/contribution-guide/badge-guidelines.svg)](https://github.com/tether/contribution-guide)
 
+Parse x-www-form-urlencoded request.
 
 ## Usage
 
 ```js
+const http = require('http')
+const parse = require('request-form')
 
+
+http.createServer((req, res) => {
+  parse(req, options)
+    .then(data => {
+      // do something with data
+    }, err => {
+      // do something with 400 error
+    })
+})
 ```
 
 ## Installation
@@ -28,9 +40,9 @@ For support, bug reports and or feature requests please make sure to read our
 
 ## Contribution
 
-The open source community is very important to us. If you want to participate to this repository, please make sure to read our <a href="https://github.com/tether/contribution-guide" target="_blank">guideline</a> before making any pull request. If you have any related project, please let everyone know in our wiki.
-## License
+The open source community is very important to us. If you want to participate to this repository, please make sure to read our <a href="https://github.com/tether/contribution-guide" target="_blank">guidelines</a> before making any pull request. If you have any related project, please let everyone know in our wiki.
 
+## License
 
 The MIT License (MIT)
 
