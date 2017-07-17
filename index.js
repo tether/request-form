@@ -2,8 +2,8 @@
  * Dependencies.
  */
 
-const inflate = require('inflate-body')
 const qs = require('qs')
+const text = require('request-text')
 
 
 /**
@@ -17,11 +17,13 @@ const qs = require('qs')
  */
 
 module.exports = function (request, options) {
-  const opts = setup(request, options)
-  return infalte(request, opts)
-    .then(str => {
+  const query = options.queryString || {}
+  if (query.allowDots == null) query.allowDots = true
+  return text(request, options, {
+    limit: '56kb'
+  }).then(str => {
       try {
-        return qs.parse(str, opts.queryString)
+        return qs.parse(str, query)
       } catch (err) {
         err.statusCode = 400
         err.status = 400
@@ -29,25 +31,4 @@ module.exports = function (request, options) {
         throw err
       }
     })
-}
-
-/**
- * Clone and setup default options.
- *
- * @param {HttpIncomingMessage} request
- * @param {Object} options
- * @return {Object}
- * @api private
- */
-
-function setup (request, options) {
-  const opts = Object.assign({}, options)
-  const query = opts.queryString || {}
-  if (query.allowDots == null) opts.queryString.allowDots = true
-  const len = request.headers['content-length']
-  const encoding = request.headers['content-encoding'] || 'identity'
-  if (len && encoding === 'identity') opts.length = ~~len
-  opts.encoding = opts.encoding || 'utf-8'
-  opts.limit = opts.limit || '56kb'
-  return opts
 }
