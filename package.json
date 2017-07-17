@@ -1,6 +1,6 @@
 {
   "name": "request-form",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Parse x-www-form-urlencoded request.",
   "main": "index.js",
   "scripts": {
@@ -27,6 +27,7 @@
     "tape": "*"
   },
   "dependencies": {
-    "qs": "^6.5.0"
+    "qs": "^6.5.0",
+    "request-text": "^1.0.1"
   }
 }
